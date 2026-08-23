@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>부곡서부교회 주일 예배 스터디 카드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --primary: #1b4332; 
+            --primary-light: #d8f3dc; 
+            --primary-dark: #081c15;
+            --bg: #f1f5f9; 
+            --app-bg: #f8fafc; 
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; } 
+        body { background-color: var(--bg); margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100dvh; font-family: 'Noto Sans KR', sans-serif; overflow: hidden; }
+        .app-container { width: 100vw; height: 100dvh; background-color: var(--app-bg); display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+        .app-container::-webkit-scrollbar { display: none; }
+        @media (min-width: 768px) { .app-container { width: 450px; height: 90vh; border-radius: 2.5rem; border: 10px solid #1e293b; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3); } }
+        
+        .slide-section { flex: 0 0 100%; width: 100%; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; position: relative; overflow: hidden; background: white; }
+        .section-content { flex: 1; overflow-y: auto; padding: 3rem 1.5rem 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+        .section-content::-webkit-scrollbar { display: none; }
+        
+        .nav-footer { flex-shrink: 0; padding: 1.2rem 1.5rem; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(15px); display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid #e2e8f0; z-index: 40; }
+        .btn-nav { padding: 0.9rem 1rem; border-radius: 1.2rem; font-weight: 700; font-size: 0.95rem; flex: 1; text-align: center; cursor: pointer; border: none; transition: 0.3s; }
+        .btn-next { background-color: var(--primary); color: white; }
+        .btn-prev { background-color: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+        
+        .detail-text { font-size: 1.15rem; line-height: 1.85; color: #334155; word-break: keep-all; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; border-radius: 1rem; overflow: hidden; background: #000; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+        
+        .badge { display: inline-block; padding: 0.3rem 0.8rem; background-color: var(--primary-light); color: var(--primary-dark); font-weight: 700; border-radius: 2rem; font-size: 0.85rem; margin-bottom: 1rem; }
+        .card { background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #f1f5f9; }
+        
+        .mask-word { background: #e2e8f0; color: #e2e8f0; padding: 0 4px; border-radius: 4px; cursor: pointer; transition: 0.3s; user-select: none; }
+        .mask-word:active, .mask-word.revealed { background: transparent; color: var(--primary-dark); font-weight: bold; }
+
+        @media print {
+            body, html { background: white !important; overflow: visible !important; height: auto !important; }
+            .app-container { display: block !important; width: 100% !important; border: none !important; box-shadow: none !important; }
+            .slide-section { page-break-after: always !important; height: auto !important; display: block !important; border-bottom: 1px solid #eee; padding-bottom: 2rem; }
+            .nav-footer, .btn-nav { display: none !important; }
+            .section-content { padding: 1rem 0 !important; overflow: visible !important; }
+            .card { box-shadow: none !important; border: 1px solid #ddd !important; break-inside: avoid; }
+            .mask-word { background: transparent !important; color: black !important; text-decoration: underline !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container" id="app">
+
+        <!-- 슬라이드 1: 메인 영상 및 제목 -->
+        <div class="slide-section" id="sec1">
+            <div class="section-content">
+                <div>
+                    <span class="badge">부곡서부교회 2026년 8월 23일 주일</span>
+                    <h1 class="text-3xl font-bold text-gray-800 font-[Nanum_Myeongjo] leading-tight mb-2">나는 하나님께 무엇을 드리고 있는가</h1>
+                    <p class="text-gray-500 font-medium">본문: 말라기 1:6–8, 로마서 12:1–2</p>
+                </div>
+                <div class="video-wrapper mt-2">
+                    <iframe src="https://www.youtube.com/embed/Pe4hBk-16BA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card mt-2 bg-[var(--primary-light)] border-none">
+                    <p class="text-[var(--primary-dark)] font-bold text-center leading-relaxed">
+                        "남은 찌꺼기가 아니라 구별된 첫 열매를,<br>예배당을 넘어 삶 전체를 거룩한 산 제물로 드리라"
+                    </p>
+                </div>
+            </div>
+            <div class="nav-footer">
+                <button class="btn-nav btn-next w-full" onclick="scrollToSec('sec2')">설교 강해 보기 ➔</button>
+            </div>
+        </div>
+
+        <!-- 슬라이드 2: 설교 강해 요약 -->
+        <div class="slide-section" id="sec2">
+            <div class="section-content">
+                <div>
+                    <span class="badge">Sermon Outline</span>
+                    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-[var(--primary)] pb-2 inline-block">설교 강해 요약</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="card">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">서론: 선물에 담긴 대상의 무게</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">소중한 대상에게는 최선을 다하지만 그렇지 않으면 구색만 맞춥니다. 우리는 하나님께 가장 맑은 시간과 구별된 물질을 드립니까, 아니면 쓰고 남은 찌꺼기를 던져주고 있습니까? 제물의 질은 하나님을 대하는 내면의 평가를 보여줍니다.</p>
+                    </div>
+                    <div class="card border-l-4 border-[var(--primary)]">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Point 1. 하나님을 크게 여겨야 합니다 (말 1:6)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">공경은 하나님을 인생에서 가장 '무겁고 존귀한 분'으로 인정하는 것입니다. 믿는다고 하면서 돈과 성공을 하나님보다 앞세워 삶의 변두리로 밀어내는 것이 곧 하나님을 멸시하는 태도입니다.</p>
+                    </div>
+                    <div class="card border-l-4 border-[var(--primary)]">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Point 2. 하나님이 삶의 우선순위가 되어야 합니다 (말 1:8)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">병들고 눈먼 것을 바친 이스라엘처럼 인색한 의무감으로 예배하지 마십시오. 구원의 은혜에 빚진 자로서 하루의 첫 시간과 소득의 첫 자리를 구별해 드리는 '첫 열매 신앙'을 회복해야 합니다.</p>
+                    </div>
+                    <div class="card border-l-4 border-[var(--primary)]">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Point 3. 하나님께 삶 전체를 드려야 합니다 (롬 12:1–2)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">영적 예배는 예배당 문을 나서는 순간 시작됩니다. 다니엘처럼 일터와 공직 한가운데서 뜻을 정하고, 가정에서 따뜻한 언어와 정직한 섬김으로 살아 움직이는 '산 제물'이 되어야 합니다.</p>
+                    </div>
+                    <div class="card bg-gray-50">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">결론: 마지막 날 남을 단 하나의 질문</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">인생의 끝에서 지위나 잔고는 사라지고 "너는 네 삶을 누구를 위해 드렸느냐?"만 남습니다. 한경직 목사의 겸손한 회개처럼 나의 모든 것이 주님의 것임을 고백하는 참된 예배자로 서십시오.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-footer">
+                <button class="btn-nav btn-prev" onclick="scrollToSec('sec1')">이전</button>
+                <button class="btn-nav btn-next" onclick="scrollToSec('sec3')">성서 주해 ➔</button>
+            </div>
+        </div>
+
+        <!-- 슬라이드 3: 심층 주해 (5문장 이상 분석, 1.15rem 텍스트) -->
+        <div class="slide-section" id="sec3">
+            <div class="section-content">
+                <div>
+                    <span class="badge">Deep Exegesis</span>
+                    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-[var(--primary)] pb-2 inline-block">본문 깊이 읽기 (성서 주해)</h2>
+                </div>
+                <div class="card">
+                    <p class="detail-text">
+                        말라기 선지자가 사역하던 포로 귀환 후기 공동체는 성전 재건 이후 종교적 열정이 급격히 식어 형식주의와 타협의 늪에 빠져 있었습니다. 당시 백성과 제사장들은 율법이 명시한 흠 없는 제물 규례(레 22:18–25)를 고의로 무시한 채, 눈멀고 병든 가축들을 바치면서도 스스로는 예배의 의무를 다하고 있다고 착각하는 심각한 영적 불감증을 드러냈습니다. 하나님께서는 인간 총독조차 불쾌히 여길 결함 있는 제물을 지적하시며, 제사의 본질이 외형적 제물의 양이 아니라 하나님을 향한 거룩한 경외심과 주권 인정에 있음을 천명하십니다. 사도 바울은 로마서 12장에서 이러한 구약의 희생제사 패러다임을 복음 안에서 재해석하여, 제단 위에서 죽어 사라지는 수동적 제물이 아니라 성도의 일상 전체가 하나님께 드려지는 ‘살아 숨 쉬는 제물(Living Sacrifice)’이어야 함을 선포합니다. 즉, 참된 영적 예배(로기코스 라트레이아)는 성전의 제의적 울타리를 넘어 세상의 타락한 가치관을 거절하고 마음을 새롭게 함으로써 매일의 삶 속에서 하나님의 선하신 뜻을 분별하고 순종하는 총체적 헌신입니다.
+                    </p>
+                </div>
+            </div>
+            <div class="nav-footer">
+                <button class="btn-nav btn-prev" onclick="scrollToSec('sec2')">이전</button>
+                <button class="btn-nav btn-next" onclick="scrollToSec('sec4')">원어 탐구 ➔</button>
+            </div>
+        </div>
+
+        <!-- 슬라이드 4: 성서 원어 탐구 (3개) -->
+        <div class="slide-section" id="sec4">
+            <div class="section-content">
+                <div>
+                    <span class="badge">Lexicon</span>
+                    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-[var(--primary)] pb-2 inline-block">성서 원어 탐구</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="card">
+                        <div class="text-[var(--primary)] font-bold text-lg">כָּבוֹד (카보드 / Kabod)</div>
+                        <div class="text-xl font-bold text-gray-900 mt-1">공경하다, 무겁다, 영광</div>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            본래 '무게가 나가다', '비중이 크다'는 뜻으로, 하나님을 공경한다는 것은 그분을 내 삶에서 가장 중요한 우선순위이자 최고의 비중으로 대우해 드리는 영적 태도를 의미합니다.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="text-[var(--primary)] font-bold text-lg">בָּזָה (바자 / Bazah)</div>
+                        <div class="text-xl font-bold text-gray-900 mt-1">멸시하다, 가볍게 여기다, 하찮게 취급하다</div>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            카보드의 반대 개념으로 대상을 가볍고 쓸모없게 대하는 것을 뜻합니다. 입술로는 주님을 고백하지만 실제 삶에서 하나님을 변두리로 밀어내는 영적 무관심이 곧 바자(멸시)입니다.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="text-[var(--primary)] font-bold text-lg">λογικός (로기코스 / Logikos)</div>
+                        <div class="text-xl font-bold text-gray-900 mt-1">합당한, 이성적인, 복음에 합치하는</div>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            로마서 12:1의 '영적 예배'에 쓰인 단어로, 십자가 구속의 은혜를 온전히 깨달은 성도가 마땅히 자신의 삶 전체를 거룩한 산 제물로 내어놓는 '가장 합당한 반응'을 의미합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-footer">
+                <button class="btn-nav btn-prev" onclick="scrollToSec('sec3')">이전</button>
+                <button class="btn-nav btn-next" onclick="scrollToSec('sec5')">QT 묵상 ➔</button>
+            </div>
+        </div>
+
+        <!-- 슬라이드 5: 4단계 QT 묵상 질문 -->
+        <div class="slide-section" id="sec5">
+            <div class="section-content">
+                <div>
+                    <span class="badge">Quiet Time</span>
+                    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-[var(--primary)] pb-2 inline-block">말씀 묵상 (4 Step)</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="card">
+                        <h3 class="font-bold text-[var(--primary)] mb-2">👀 관찰 (Observation)</h3>
+                        <p class="text-gray-800 font-medium text-sm leading-relaxed">하나님께서는 말라기 시대 제사장들과 백성들이 제단에 바친 제물(눈먼 것, 저는 것, 병든 것)을 보시고 왜 "총독에게 드려보라"며 준엄하게 꾸짖으셨습니까?</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="font-bold text-[var(--primary)] mb-2">💡 해석 (Interpretation)</h3>
+                        <p class="text-gray-800 font-medium text-sm leading-relaxed">이스라엘 백성은 제사를 드리고 있으면서도 왜 하나님께 "우리가 언제 주의 이름을 멸시하였나이까"라고 반문했습니까? 그들의 착각은 어디서 비롯되었습니까?</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="font-bold text-[var(--primary)] mb-2">❤️ 적용 (Application)</h3>
+                        <p class="text-gray-800 font-medium text-sm leading-relaxed">나는 나의 하루 시간과 소득 중에서 하나님을 '가장 첫 자리'에 두고 있습니까, 아니면 내 계획을 다 채우고 남은 찌꺼기를 하나님께 드리고 있습니까?</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="font-bold text-[var(--primary)] mb-2">🔥 결단 (Commitment)</h3>
+                        <p class="text-gray-800 font-medium text-sm leading-relaxed">교회 안의 거룩함을 넘어 내일 월요일부터 마주할 가정, 직장, 대인관계에서 하나님이 기뻐하시는 '살아있는 제물'로 증명해야 할 구체적인 모습은 무엇입니까?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-footer">
+                <button class="btn-nav btn-prev" onclick="scrollToSec('sec4')">이전</button>
+                <button class="btn-nav btn-next" onclick="scrollToSec('sec6')">5단계 실천 ➔</button>
+            </div>
+        </div>
+
+        <!-- 슬라이드 6: 삶의 변화를 위한 5단계 실천 -->
+        <div class="slide-section" id="sec6">
+            <div class="section-content">
+                <div>
+                    <span class="badge">Action Plan</span>
+                    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-[var(--primary)] pb-2 inline-block">삶의 변화를 위한 5단계 실천</h2>
+                </div>
+                <div class="space-y-3">
+                    <div class="card flex gap-3 items-start">
+                        <div class="bg-[var(--primary-light)] text-[var(--primary-dark)] px-3 py-1 rounded-lg font-bold shrink-0">1</div>
+                        <p class="text-gray-700 text-sm pt-0.5 leading-relaxed"><strong>하루의 첫 15분 구별하기:</strong> 아침에 눈을 뜨자마자 스마트폰을 확인하기 전에 말씀 묵상과 기도로 하나님의 주권을 먼저 인정합니다.</p>
+                    </div>
+                    <div class="card flex gap-3 items-start">
+                        <div class="bg-[var(--primary-light)] text-[var(--primary-dark)] px-3 py-1 rounded-lg font-bold shrink-0">2</div>
+                        <p class="text-gray-700 text-sm pt-0.5 leading-relaxed"><strong>물질의 첫 열매 구별하여 드리기:</strong> 소득이 생겼을 때 쓰고 남은 잔돈이 아니라, 주권자이신 하나님께 감사의 고백으로 첫 몫을 떼어 드립니다.</p>
+                    </div>
+                    <div class="card flex gap-3 items-start">
+                        <div class="bg-[var(--primary-light)] text-[var(--primary-dark)] px-3 py-1 rounded-lg font-bold shrink-0">3</div>
+                        <p class="text-gray-700 text-sm pt-0.5 leading-relaxed"><strong>예배의 태도 점검하기:</strong> 주일 예배를 토요일 저녁부터 기도로 준비하며, 약속 시간에 늦지 않도록 경외심과 설렘으로 임합니다.</p>
+                    </div>
+                    <div class="card flex gap-3 items-start">
+                        <div class="bg-[var(--primary-light)] text-[var(--primary-dark)] px-3 py-1 rounded-lg font-bold shrink-0">4</div>
+                        <p class="text-gray-700 text-sm pt-0.5 leading-relaxed"><strong>가정과 일터에서 언어와 태도 갱신:</strong> 배우자와 자녀에게 거친 언어를 버리고 온유함을 실천하며, 일터에서 정직과 성실로 그리스도인의 정체성을 드러냅니다.</p>
+                    </div>
+                    <div class="card flex gap-3 items-start">
+                        <div class="bg-[var(--primary-light)] text-[var(--primary-dark)] px-3 py-1 rounded-lg font-bold shrink-0">5</div>
+                        <p class="text-gray-700 text-sm pt-0.5 leading-relaxed"><strong>인생의 청지기 고백하기:</strong> 나의 건강, 재능, 가정, 직장이 모두 주님의 은혜임을 인정하며 이웃을 섬기고 사랑하는 데 내어놓습니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-footer">
+                <button class="btn-nav btn-prev" onclick="scrollToSec('sec5')">이전</button>
+                <button class="btn-nav btn-next" onclick="scrollToSec('sec7')">말씀 암송 ➔</button>
+            </div>
+        </div>
+
+        <!-- 슬라이드 7: 말씀 암송 (마스킹 키워드 3개) -->
+        <div class="slide-section" id="sec7">
+            <div class="section-content flex flex-col justify-center text-center">
+                <div>
+                    <span class="badge mx-auto">Memory Verse</span>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">이번 주 암송 구절</h2>
+                </div>
+                <div class="card py-8 px-6 border-2 border-[var(--primary-light)]">
+                    <p class="text-xl leading-loose font-medium text-gray-800">
+                        "그러므로 형제들아 내가 하나님의 모든 자비하심으로 너희를 권하노니 너희 <span class="mask-word">몸</span>을 하나님이 기뻐하시는 거룩한 <span class="mask-word">산 제물</span>로 드리라 이는 너희가 드릴 <span class="mask-word">영적 예배</span>니라"
+                    </p>
+                    <p class="mt-8 font-bold text-[var(--primary-dark)] text-lg">(로마서 12장 1절)</p>
+                </div>
+                <p class="text-gray-500 mt-6 text-sm">💡 회색 빈칸을 터치(클릭)하면 숨겨진 말씀이 나타납니다.</p>
+            </div>
+            <div class="nav-footer">
+                <button class="btn-nav btn-prev" onclick="scrollToSec('sec6')">이전</button>
+                <button class="btn-nav bg-gray-800 text-white" onclick="scrollToSec('sec1')">처음으로 ↺</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function scrollToSec(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // 마스크 워드 터치/클릭 토글 이벤트
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.mask-word').forEach(word => {
+                word.addEventListener('click', function() {
+                    this.classList.toggle('revealed');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
